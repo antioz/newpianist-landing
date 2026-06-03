@@ -240,3 +240,14 @@ body {
   .footer-inner { flex-direction: column; }
   .footer-legal { text-align: left; }
 }
+
+/* ===== hero background video (already dark theme) ===== */
+.hero { min-height: min(92vh, 900px); display: flex; flex-direction: column; justify-content: center; }
+.hero-bg::after {
+  background:
+    radial-gradient(90% 80% at 30% 42%, rgba(12,10,7,.36), rgba(12,10,7,.70) 94%),
+    linear-gradient(0deg, rgba(12,10,7,.58), rgba(12,10,7,.08) 52%);
+}
+.hero-glow { z-index: 1; opacity: .45; }
+.hero .cta-primary { box-shadow: 0 10px 34px rgba(0,0,0,.5); }
+.hero-stats { margin-top: clamp(28px,4vw,44px); }
