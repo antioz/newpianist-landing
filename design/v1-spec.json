@@ -1,0 +1,21 @@
+{
+  "variant": "v1-salon",
+  "tagline": "Luxury-minimalist, академично, белая бумага",
+  "background": "var(--bg)",
+  "h1_font_size_px": 56,
+  "sections": [
+    { "id": "hero", "kind": "hero", "title": "Учим играть на фортепиано. Серьёзно, по-своему." },
+    { "id": "stats", "kind": "stats-grid", "items": 4 },
+    { "id": "directions", "kind": "cards-3", "primary_first": true },
+    { "id": "teachers", "kind": "grid-5+founder" },
+    { "id": "pricing", "kind": "tables-2col" },
+    { "id": "reviews", "kind": "image-grid-3x2" },
+    { "id": "faq", "kind": "accordion-10" },
+    { "id": "contacts", "kind": "split-map" }
+  ],
+  "cta": {
+    "primary_tg": "https://t.me/newpianist_bot?start=lp_v1_<section>",
+    "primary_max": "https://max.ru/id771402577192_1_bot",
+    "phone": "+79161253565"
+  }
+}

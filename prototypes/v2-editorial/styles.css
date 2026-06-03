@@ -1,0 +1,281 @@
+/* ===== V2 «Editorial Warm» — printed-magazine longread on cream paper ===== */
+/* Loads AFTER base.css → overrides shared values, adds V2-only classes.     */
+
+/* ---- paper stock: warmer than V1's bright white ---- */
+body {
+  background: var(--bg-deep);          /* cream paper */
+  font-size: 18px;
+}
+/* a thin printed top-rule, like a magazine binding edge */
+body::before {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--gold-bright), var(--gold-soft) 40%, transparent);
+  pointer-events: none;
+}
+
+.section { max-width: 1180px; }
+
+/* ---- nav ---- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in srgb, var(--bg-deep) 86%, transparent);
+  backdrop-filter: saturate(1.15) blur(14px);
+  border-bottom: 1px solid var(--card-rule);
+}
+.nav-inner { max-width: 1180px; margin: 0 auto; padding: 14px clamp(20px,5vw,56px); display: flex; align-items: center; gap: 28px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); }
+.brand-mark {
+  width: 38px; height: 38px; display: grid; place-items: center; flex: none;
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; letter-spacing: .02em;
+  color: var(--gold); border: 1px solid var(--gold-soft); border-radius: 50%;
+}
+.brand-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; line-height: 1.05; display: flex; flex-direction: column; }
+.brand-name small { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--hint); margin-top: 3px; }
+.nav-links { flex: 1; display: flex; gap: 26px; justify-content: center; }
+.nav-links a { color: var(--fg-soft); text-decoration: none; font-size: 14px; position: relative; padding: 4px 0; }
+.nav-links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--gold); transition: width .25s; }
+.nav-links a:hover { color: var(--fg); } .nav-links a:hover::after { width: 100%; }
+.nav-cta { padding: 11px 22px; font-size: 14px; }
+
+/* ===================== HERO — editorial cover ===================== */
+.hero {
+  max-width: 980px; margin: 0 auto;
+  padding: clamp(40px,7vw,84px) clamp(20px,5vw,56px) 0;
+  text-align: center;
+}
+.hero-masthead {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500;
+  letter-spacing: .26em; text-transform: uppercase; color: var(--gold);
+  padding-bottom: 26px; margin-bottom: 30px;
+  border-bottom: 1px solid var(--card-rule);
+}
+.masthead-dot { color: var(--sep); }
+.masthead-issue { color: var(--hint); }
+
+.hero-epigraph {
+  font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.5; color: var(--fg-soft);
+  max-width: 30ch; margin: 0 auto 34px; position: relative;
+  font-variation-settings: "opsz" 36;
+}
+.hero-epigraph cite {
+  display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--hint); margin-top: 16px;
+}
+
+.hero-title {
+  font-size: clamp(40px, 7vw, 84px); margin: 0 auto 26px; max-width: 16ch;
+  font-style: italic; font-weight: 400; line-height: 1.02;
+}
+.hero-title em { font-style: italic; font-weight: 500; color: var(--gold); }
+
+.hero-lede { max-width: 60ch; margin: 0 auto 36px; }
+
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+.hero-byline {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 28px 56px; margin-top: 52px;
+  padding-top: 30px; border-top: 1px solid var(--card-rule);
+}
+.byline-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.byline-item b {
+  font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(30px,3.4vw,40px);
+  line-height: 1; font-variation-settings: "opsz" 72; color: var(--fg);
+}
+.byline-item span { font-size: 12px; color: var(--hint); letter-spacing: .02em; }
+.hero-keys { margin-top: clamp(44px,7vw,80px); max-width: 100%; }
+
+/* ===================== DIRECTIONS — typographic rows ===================== */
+.directions .section-head { display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: baseline; }
+.dir-list { margin-top: 36px; border-top: 2px solid var(--ink); }
+.dir-row {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 28px; align-items: baseline;
+  padding: 30px 0; border-bottom: 1px solid var(--card-rule); position: relative;
+  transition: background .3s;
+}
+.dir-row::after {
+  content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0;
+  background: var(--gold-bright); transition: width .4s cubic-bezier(.2,.8,.2,1);
+}
+.dir-row:hover::after { width: 100%; }
+.dir-num {
+  font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: .2em;
+  color: var(--gold); padding-top: 6px;
+}
+.dir-title { font-family: 'Fraunces', serif; font-size: clamp(24px,3vw,34px); font-weight: 400; letter-spacing: -.01em; margin: 0 0 8px; }
+.dir-desc { font-size: 15.5px; color: var(--hint); line-height: 1.55; margin: 0; max-width: 52ch; }
+.dir-meta { text-align: right; white-space: nowrap; }
+.dir-price { display: block; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: var(--gold); }
+.dir-note { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--hint-dim); }
+
+/* ===================== METHOD / SCIENCE — the longread centerpiece ===================== */
+.method { border-top: 1px solid var(--card-rule); background: var(--bg); }
+.method-head { max-width: 760px; margin: 0 auto 8px; text-align: center; }
+.method-head .section-label { display: block; margin-bottom: 18px; }
+.method-title { font-size: clamp(32px,5vw,58px); }
+.method-title em { font-style: italic; color: var(--gold); }
+.method-standfirst {
+  font-family: 'Fraunces', serif; font-size: clamp(18px,2.2vw,23px); line-height: 1.45;
+  color: var(--fg-soft); max-width: 56ch; margin: 18px auto 0; font-variation-settings: "opsz" 40;
+}
+
+/* multi-column magazine body */
+.longread {
+  max-width: 980px; margin: clamp(44px,6vw,72px) auto 0;
+  columns: 2; column-gap: 52px; column-rule: 1px solid var(--card-rule);
+  text-align: justify; hyphens: auto;
+}
+.longread p { margin: 0 0 18px; color: var(--fg-soft); font-size: 16.5px; line-height: 1.62; }
+.longread p:last-child { margin-bottom: 0; }
+.dropcap::first-letter {
+  font-family: 'Fraunces', serif; font-weight: 500; font-style: italic;
+  float: left; font-size: 4.6em; line-height: .76; padding: 6px 12px 0 0;
+  color: var(--gold); font-variation-settings: "opsz" 144;
+}
+/* pull-quote spans both columns */
+.pull-quote {
+  column-span: all; margin: 14px 0 26px; padding: 26px 0;
+  border-top: 2px solid var(--gold-bright); border-bottom: 1px solid var(--card-rule);
+  font-family: 'Fraunces', serif; font-style: italic; font-weight: 400;
+  font-size: clamp(22px,3vw,34px); line-height: 1.22; color: var(--fg);
+  text-align: center; font-variation-settings: "opsz" 72;
+}
+.pull-quote cite {
+  display: block; font-style: normal; font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--hint);
+  margin-top: 16px;
+}
+
+/* skills — numbered editorial list */
+.method-skills { max-width: 980px; margin: clamp(48px,6vw,72px) auto 0; }
+.skills-head { margin-bottom: 22px; }
+.skills-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border-top: 1px solid var(--card-rule); }
+.skills-list li { display: flex; gap: 16px; padding: 28px 26px 28px 0; border-bottom: 1px solid var(--card-rule); }
+.skill-n { font-family: 'Fraunces', serif; font-style: italic; font-size: 28px; color: var(--gold-soft); line-height: 1; flex: none; }
+.skills-list b { font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; display: block; margin-bottom: 6px; }
+.skills-list p { margin: 0; font-size: 14.5px; color: var(--hint); line-height: 1.5; }
+
+/* pillars */
+.method-pillars { max-width: 980px; margin: clamp(40px,5vw,60px) auto 0; }
+.pillars-head { margin-bottom: 22px; }
+.pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--card-rule); border: 1px solid var(--card-rule); }
+.pillar { background: var(--bg); padding: 30px 28px; }
+.pillar-n { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .2em; color: var(--gold); }
+.pillar h4 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 20px; margin: 14px 0 8px; letter-spacing: -.01em; }
+.pillar p { margin: 0; font-size: 14.5px; color: var(--hint); line-height: 1.55; }
+
+/* ===================== TEACHERS — index-style rows ===================== */
+.teachers { border-top: 1px solid var(--card-rule); }
+.teachers-list { margin-top: 38px; border-top: 2px solid var(--ink); }
+.teacher-row {
+  display: grid; grid-template-columns: 92px 1fr; gap: 30px; align-items: center;
+  padding: 26px 0; border-bottom: 1px solid var(--card-rule);
+}
+.teacher-mono-wrap {
+  width: 92px; height: 92px; border-radius: 50%; overflow: hidden;
+  box-shadow: var(--shadow-sm); border: 1px solid var(--card-rule); flex: none;
+}
+.teacher-mono-wrap .teacher-mono { font-size: 32px; }
+.teacher-name { font-family: 'Fraunces', serif; font-size: clamp(20px,2.4vw,26px); font-weight: 400; line-height: 1.12; margin: 0 0 6px; letter-spacing: -.01em; }
+.teacher-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .03em; color: var(--hint); margin: 0 0 10px; line-height: 1.5; }
+.teacher-quote { font-family: 'Fraunces', serif; font-style: italic; font-size: 16px; color: var(--fg-soft); margin: 0; line-height: 1.4; }
+
+.founder {
+  margin-top: 56px; padding: clamp(28px,4vw,52px);
+  background: var(--card-warm); border: 1px solid var(--card-rule); border-radius: 4px;
+  display: grid; grid-template-columns: 180px 1fr; gap: clamp(28px,4vw,56px); align-items: center;
+}
+.founder-photo { width: 180px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: var(--shadow-md); }
+.founder-body .section-label { display: block; margin-bottom: 10px; }
+.founder-name { font-family: 'Fraunces', serif; font-size: clamp(26px,3vw,38px); font-weight: 400; margin: 6px 0 10px; letter-spacing: -.015em; }
+.pull-quote-sm {
+  column-span: auto; text-align: left; border-bottom: none; border-top-width: 1px;
+  font-size: clamp(18px,2vw,23px); padding: 18px 0 0; margin: 16px 0 0;
+}
+
+/* ===================== PRICING ===================== */
+.pricing { border-top: 1px solid var(--card-rule); background: var(--bg); }
+.pricing-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 40px; background: var(--card-rule); border: 1px solid var(--card-rule); }
+.price-block { padding: 34px 34px; background: var(--bg-deep); }
+.price-feature { background: var(--card-warm); }
+.price-h { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; margin: 0 0 10px; }
+.price-h-sub { margin-top: 32px; }
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table td { padding: 13px 0; border-bottom: 1px solid var(--card-rule); font-size: 14.5px; color: var(--fg-soft); }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table td:last-child { text-align: right; font-family: 'IBM Plex Mono', monospace; font-weight: 500; color: var(--fg); white-space: nowrap; }
+.pricing-cta { margin-top: 36px; }
+
+/* ===================== REVIEWS ===================== */
+.reviews { border-top: 1px solid var(--card-rule); }
+.reviews-grid { columns: 3; column-gap: 18px; margin-top: 40px; }
+.review-card { margin: 0 0 18px; break-inside: avoid; background: var(--card); border: 1px solid var(--card-rule); border-radius: 4px; padding: 8px; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s; }
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.review-card img { width: 100%; height: auto; display: block; border-radius: 2px; }
+
+/* ===================== FAQ ===================== */
+.faq { border-top: 1px solid var(--card-rule); background: var(--bg); }
+.faq-list { margin-top: 32px; border-top: 2px solid var(--ink); max-width: 860px; }
+.faq details { border-bottom: 1px solid var(--card-rule); }
+.faq summary { cursor: pointer; font-family: 'Fraunces', serif; font-size: clamp(18px,2vw,23px); font-weight: 400; padding: 22px 44px 22px 0; position: relative; list-style: none; transition: color .2s; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 24px; font-family: 'IBM Plex Sans', sans-serif; transition: transform .25s; }
+.faq details[open] summary::after { content: "−"; }
+.faq summary:hover { color: var(--gold); }
+.faq p { color: var(--hint); margin: 0 0 22px; max-width: 70ch; }
+
+/* ===================== CONTACTS ===================== */
+.contacts { border-top: 1px solid var(--card-rule); }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+.contacts-info .section-label { display: block; margin-bottom: 18px; }
+.contacts-dl { margin: 28px 0 32px; display: grid; grid-template-columns: 120px 1fr; gap: 18px 24px; }
+.contacts-dl dt { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); padding-top: 4px; }
+.contacts-dl dd { margin: 0; color: var(--fg-soft); line-height: 1.6; }
+.contacts-dl a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--gold-soft); }
+.map-card { position: relative; border-radius: 4px; overflow: hidden; min-height: 360px; border: 1px solid var(--card-rule);
+  background:
+    radial-gradient(60% 60% at 70% 30%, color-mix(in srgb, var(--gold-soft) 18%, transparent), transparent),
+    repeating-linear-gradient(45deg, var(--card-warm) 0 22px, var(--bg-deep) 22px 24px);
+  display: grid; place-items: center; }
+.map-pin { position: absolute; left: 50%; top: 46%; transform: translate(-50%,-50%); color: var(--gold); font-size: 40px; text-shadow: 0 8px 20px color-mix(in srgb, var(--gold) 40%, transparent); }
+.map-label { position: absolute; bottom: 22px; left: 22px; background: var(--card); padding: 12px 16px; border-radius: 4px; box-shadow: var(--shadow-md); font-weight: 600; font-size: 14px; }
+.map-label span { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 400; color: var(--hint); letter-spacing: .08em; margin-top: 3px; }
+
+/* ===================== FOOTER ===================== */
+.footer { margin-top: clamp(64px,9vw,120px); }
+.footer-inner { max-width: 1180px; margin: 0 auto; padding: 48px clamp(20px,5vw,56px); display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; border-top: 1px solid var(--card-rule); }
+.footer-brand { display: flex; align-items: center; gap: 12px; font-family: 'Fraunces', serif; font-size: 18px; }
+.footer-brand span { display: flex; flex-direction: column; }
+.footer-brand small { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--hint); margin-top: 3px; }
+.footer-legal { text-align: right; color: var(--hint); font-size: 12.5px; line-height: 1.6; }
+.footer-legal a { color: var(--fg-soft); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 980px) {
+  .longread { columns: 1; column-rule: none; max-width: 64ch; }
+  .skills-list { grid-template-columns: 1fr; }
+  .skills-list li { padding-right: 0; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .pricing-cols, .contacts-grid { grid-template-columns: 1fr; }
+  .reviews-grid { columns: 2; }
+  .founder { grid-template-columns: 1fr; text-align: left; }
+  .founder-photo { width: 150px; }
+  .directions .section-head { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero-byline { gap: 22px 36px; }
+  .dir-row { grid-template-columns: 1fr; gap: 8px; }
+  .dir-num { padding-top: 0; }
+  .dir-meta { text-align: left; }
+  .teacher-row { grid-template-columns: 64px 1fr; gap: 18px; }
+  .teacher-mono-wrap { width: 64px; height: 64px; }
+  .teacher-mono-wrap .teacher-mono { font-size: 24px; }
+  .price-block { padding: 26px 22px; }
+  .reviews-grid { columns: 1; }
+  .footer-inner { flex-direction: column; }
+  .footer-legal { text-align: left; }
+}
