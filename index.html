@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Новый пианист — лендинг, 3 концепта дизайна</title>
-<meta name="description" content="Демо лендинга музыкальной школы «Новый пианист»: три концепта на выбор — Салон, Editorial, Modern.">
+<title>Новый пианист — лендинг школы</title>
+<meta name="description" content="Лендинг музыкальной школы «Новый пианист»: основной вариант + три демо-концепта (Салон, Editorial, Modern).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="./prototypes/_shared/tokens.css">
@@ -19,6 +19,18 @@
   .cover-hero { max-width: 820px; margin-bottom: clamp(48px,7vw,80px); }
   .cover-hero .h1 { margin-bottom: 22px; }
   .cover-hero .gold-glow { color: var(--gold-bright); text-shadow: 0 0 40px color-mix(in srgb, var(--gold-bright) 45%, transparent); }
+  .vmain { display: grid; grid-template-columns: 1.25fr 1fr; text-decoration: none; color: var(--fg); border: 1px solid var(--gold-soft); border-radius: 8px; overflow: hidden; background: var(--card); box-shadow: var(--shadow-lg); transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; margin-bottom: clamp(48px,7vw,80px); }
+  .vmain:hover { transform: translateY(-8px); border-color: var(--gold); }
+  .vmain-shot { overflow: hidden; background: var(--bg-deep); min-height: 280px; }
+  .vmain-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .vmain:hover .vmain-shot img { transform: scale(1.04); }
+  .vmain-body { padding: clamp(28px,4vw,44px); display: flex; flex-direction: column; justify-content: center; }
+  .vmain-name { font-family: 'Fraunces', serif; font-size: clamp(28px,3.4vw,38px); font-weight: 400; margin: 12px 0 12px; letter-spacing: -.01em; }
+  .vmain .vcard-desc { min-height: 0; font-size: 15px; }
+  .vmain:hover .vcard-go { color: var(--gold-bright); }
+  .vmain:hover .vcard-go::after { transform: translateX(5px); }
+  .others-label { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--hint); margin-bottom: 22px; }
+  @media (max-width: 860px) { .vmain { grid-template-columns: 1fr; } .vmain-shot { aspect-ratio: 16/10; min-height: 0; } }
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .vcard { display: flex; flex-direction: column; text-decoration: none; color: var(--fg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--card); box-shadow: var(--shadow-md); transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s; }
   .vcard:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--gold-soft); }
@@ -46,11 +58,22 @@
   </div>
 
   <header class="cover-hero">
-    <div class="eyebrow reveal d1">Лендинг · 3 концепта дизайна</div>
-    <h1 class="h1 reveal d2">Выберите облик<br>школы <span class="gold-glow">«Новый пианист».</span></h1>
-    <p class="lede reveal d3">Один контент и одна бренд-система — три арт-дирекшна. Откройте любой, переключайтесь прямо на странице нижней панелью.</p>
+    <div class="eyebrow reveal d1">Лендинг школы</div>
+    <h1 class="h1 reveal d2">Лендинг школы <span class="gold-glow">«Новый пианист».</span></h1>
+    <p class="lede reveal d3">Основной вариант — ниже. Три ранних концепта оставлены как примеры арт-дирекшна.</p>
   </header>
 
+  <a class="vmain reveal d3" href="./piano/index.html">
+    <div class="vmain-shot"><img src="./piano/assets/hero-keys.webp" alt="Превью основного лендинга" loading="lazy"></div>
+    <div class="vmain-body">
+      <div class="vcard-k">Основной вариант</div>
+      <div class="vmain-name">«Новый пианист»</div>
+      <p class="vcard-desc">Полная версия: главная с видеофоном, страницы «Логопед» и «Нейропсихолог», фото школы и основателя.</p>
+      <span class="vcard-go">Открыть лендинг</span>
+    </div>
+  </a>
+
+  <div class="others-label reveal d4">Другие примеры · демо</div>
   <div class="cards">
     <a class="vcard reveal d3" href="./prototypes/v1-salon/index.html">
       <div class="vcard-shot"><img src="./cover/v1-salon.png" alt="Превью варианта Салон" loading="lazy"></div>
