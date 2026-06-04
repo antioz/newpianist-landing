@@ -8,6 +8,7 @@
 /* ---------- Reset ---------- */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+#zayavka{scroll-margin-top:84px}
 body{margin:0}
 img,video{display:block;max-width:100%}
 button{font:inherit;color:inherit;cursor:pointer}
