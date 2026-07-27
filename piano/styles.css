@@ -184,7 +184,7 @@ h1,h2,h3,.display{
   border-bottom-color:var(--sep);color:var(--fg);padding-block:13px;
 }
 .brand{display:flex;align-items:center;gap:12px;letter-spacing:.16em;font-weight:600;font-size:14px;text-transform:uppercase}
-.brand .mark{flex:none;height:22px;width:auto;display:block}
+.brand .mark{flex:none;height:34px;width:auto;display:block}
 .brand .mark-dark{display:none}
 .site-header.scrolled .brand .mark-white{display:none}
 .site-header.scrolled .brand .mark-dark{display:block}
