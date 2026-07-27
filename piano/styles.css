@@ -184,8 +184,10 @@ h1,h2,h3,.display{
   border-bottom-color:var(--sep);color:var(--fg);padding-block:13px;
 }
 .brand{display:flex;align-items:center;gap:12px;letter-spacing:.16em;font-weight:600;font-size:14px;text-transform:uppercase}
-.brand .mark{flex:none}
-.brand .mark path,.brand .mark line{stroke:currentColor}
+.brand .mark{flex:none;height:22px;width:auto;display:block}
+.brand .mark-dark{display:none}
+.site-header.scrolled .brand .mark-white{display:none}
+.site-header.scrolled .brand .mark-dark{display:block}
 .brand small{display:block;font-size:9.5px;letter-spacing:.34em;opacity:.6;font-weight:500;margin-top:3px}
 .nav{display:flex;gap:30px;font-size:14px;font-weight:500}
 .nav a{position:relative;opacity:.86;transition:opacity .2s}
